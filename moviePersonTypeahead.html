@@ -1,0 +1,10 @@
+<script type="text/ng-template" id="moviePersonTypeahead.html">
+    <a class="autocomplete" href="#/movie/{{match.model.id}}" ng-show="match.model.type == 'movie'">
+        <span ng-show="match.model.type == 'movie'" class="glyphicon glyphicon-film"></span>
+        {{match.label}} <span ng-show="match.model.date">({{match.model.date | date:'yyyy'}})</span>
+    </a>
+    <a class="autocomplete" href="#/person/{{match.model.id}}" ng-show="match.model.type == 'person'" >
+        <span ng-show="match.model.type == 'person'" class="glyphicon glyphicon-user"></span>
+        {{match.label}}
+    </a>
+</script>

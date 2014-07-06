@@ -1,0 +1,77 @@
+<div class="col-md-12" ng-controller="MovieCtrl">
+    <h1>
+        {{movie.original_title}} <span ng-show="movie.release_date">({{movie.release_date | date:'yyyy'}})</span>
+        <a ng-show="imdbUrl" href="{{imdbUrl}}" class="pull-right imdbLink" target="_blank">view on imdb</a>
+    </h1>
+    <h4 ng-show="movie.original_title != movie.title">{{movie.title}}</h4>
+    <section class="row">
+        <div class="col-md-3">
+             <div data-movie-image data-image-file="movie.poster_path" data-size="original" data-type="movie" data-done-loading="!loadingMovie"></div>
+        </div>
+        <div class="col-md-9">
+            <section class="row">
+                <h4>Overview</h4>
+                {{movie.overview}}
+            </section>
+            <section class="row" style="display:block;" ng-show="moviePersons.shortenedCrew.Directing">
+                <div class="col-xs-12 col-md-12">
+                    <header class="row">
+                        <h4>
+                            <ng-pluralize count="moviePersons.shortenedCrew.Directing.length"
+                                          when="{'1': 'Director',
+                                                 'other': 'Directors'}">
+                            </ng-pluralize>
+                        </h4>
+                    </header>
+                    <span ng-repeat="person in moviePersons.shortenedCrew.Directing">
+                        {{person.name}}<span ng-show="!$last">,</span>
+                    </span>
+                </div>
+            </section>
+            <section class="row" ng-show="moviePersons.shortenedCrew.Writing">
+                <div class="col-xs-12 col-md-12">
+                    <header class="row">
+                        <h4>
+                            <ng-pluralize count="moviePersons.shortenedCrew.Writing.length"
+                                          when="{'1': 'Writer',
+                                                 'other': 'Writers'}">
+                            </ng-pluralize>
+                        </h4>
+                    </header>
+                    <span ng-repeat="person in moviePersons.shortenedCrew.Writing">
+                        {{person.name}}<span ng-show="!$last">,</span>
+                    </span>
+                </div>
+            </section>
+            <section class="row" ng-show="moviePersons.shortenedCrew.Production">
+                <div class="col-xs-12 col-md-12">
+                    <header class="row">
+                        <h4>
+                            <ng-pluralize count="moviePersons.shortenedCrew.Production.length"
+                                          when="{'1': 'Producer',
+                                                 'other': 'Producers'}">
+                            </ng-pluralize>
+                        </h4>
+                    </header>
+                    <span ng-repeat="person in moviePersons.shortenedCrew.Production">
+                        {{person.name}}<span ng-show="!$last">,</span>
+                    </span>
+                </div>
+            </section>
+        </div>
+    </section>
+    <section ng-show="moviePersons.cast.length">
+        <div class="col-xs-12 col-md-12">
+            <header class="row">
+                <h3>Actors</h3>
+            </header>
+            <ul class="removeFormatting">
+                <li ng-repeat="person in moviePersons.cast">
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div data-person-block person="person"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>

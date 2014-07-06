@@ -1,0 +1,9 @@
+<div>
+    <img ng-show="imageUrl && doneLoading && (height || width)" width="{{width}}" height="{{height}}" src="{{imageUrl}}" />
+    <img ng-show="imageUrl && doneLoading && !(height || width)" src="{{imageUrl}}" />
+    <div ng-show="!imageUrl && doneLoading" ng-class="size" class="noImage">
+        <div class="bgGlyph glyphicon {{glyphClass}}"></div>
+        <div class="msg"></div>
+    </div>
+</div>
+

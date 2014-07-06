@@ -1,0 +1,163 @@
+@import "bower_components/bootstrap/less/bootstrap.less";
+//@import "bower_components/bootstrap/less/theme.less";
+@import "bower_components/font-awesome/less/font-awesome.less";
+@fa-font-path: "bower_components/font-awesome/fonts";
+
+/* Component LESS */
+@import "partial/home/home.less";
+@import "partial/movie/movie.less";
+@import "partial/person/person.less";
+@import "partial/searchResults/searchResults.less";
+@import "directive/personBlock/personBlock.less";
+@import "directive/movieBlock/movieBlock.less";
+@import "directive/movieImage/movieImage.less";
+/* Add Component LESS Above */
+
+/* Required for Angular UI Bootstrap */
+.nav, .pagination, .carousel a { cursor: pointer; }
+
+/* Personal preference for BS modal.  The LESS below makes the backdrop white and
+   causes the modal to fade in rather than slide in. */
+//@modal-backdrop-bg: white;
+//.modal {
+//	&.fade {
+//		.transition(opacity .3s);
+//	}
+//	&.fade .modal-dialog {
+//		.translate(0,0);
+//	}
+//}
+
+header {
+  &.mainHeader {
+    background-image: url("images/killerBackground.jpg");
+    background-repeat: no-repeat;
+    background-position: 50% 30%;
+    color: black;
+    padding: 20px;
+    border-bottom : 1px solid #D0D0D0;
+    height:160px;
+    .autocomplete {
+      .releaseDate {
+        opacity: .5;
+      }
+    }
+  }
+
+  .titleAndSearchBox {
+    background:rgba(255,255,255,0.7);
+    padding: 0 10px 10px 10px;
+    border: 1px solid #D0D0D0;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    box-shadow: 1px 1px 1px @gray;
+    h1 {
+      margin-top: 5px;
+    }
+  }
+}
+
+footer {
+  margin-top:40px;
+  height: 50px;
+  padding: 10px;
+  text-align: right;
+}
+
+.homeLink {
+  font-size: 25px;
+  padding-right:10px;
+  padding-top:7px;
+  color: black;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.noImage {
+  position: relative;
+  vertical-align: middle;
+  background-color: #D0D0D0;
+
+  .msg {
+    position: absolute;
+    text-align: center;
+  }
+
+  .bgGlyph {
+    position: absolute;
+    color: #A0A0a0;
+  }
+
+  &.small {
+    width: 50px;
+    height: 70px;
+    .msg {
+      &:before {
+        content: "No Image"
+      }
+      padding-left: 3px;
+      opacity: .6;
+      width: 46px;
+      bottom: 4px;
+      font-weight: normal;
+      font-size: 8px;
+    }
+    .bgGlyph {
+      font-size: 38px;
+      top: 10px;
+      left: 6px;
+    }
+  }
+
+  &.medium {
+    width: 185px;
+    height: 280px;
+    .msg {
+      &:before {
+        content: ""
+      }
+      opacity: .6;
+      width: 185px;
+      bottom: 4px;
+      font-weight: normal;
+      font-size: 30px;
+    }
+    .bgGlyph {
+      font-size: 120px;
+      top: 80px;
+      left: 34px;
+    }
+  }
+  &.large {
+    width: 185px;
+    height: 280px;
+    .msg {
+      font-weight: bold;
+      font-size: 22px;
+    }
+    .bgGlyph {
+      font-size: 80px;
+      top:95px;
+      left:53px;
+    }
+  }
+}
+
+ul.removeFormatting {
+  list-style-type: none;
+  margin-left: 0px;
+  padding-left: 0px;
+  li {
+    margin-left: 0px;
+    padding-left: 0px;
+  }
+}
+
+a.imdbLink {
+  font-size: 12px;
+}
+
+a:hover {
+  text-decoration: none;
+}

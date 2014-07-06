@@ -1,0 +1,22 @@
+<div class="col-md-12" ng-controller="SearchresultsCtrl">
+    <section ng-show="movies.length" class="row">
+        <h2>Movies</h2>
+        <ul class="removeFormatting">
+            <li ng-repeat="movie in movies">
+                <div class="col-xs-12 col-sm-6 col-lg-3">
+                    <div data-movie-block movie="movie"></div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section ng-show="people.length">
+        <h2>People</h2>
+        <ul class="removeFormatting">
+            <li ng-repeat="person in people">
+                <div class="col-xs-12 col-sm-6 col-lg-3">
+                    <div data-person-block person="person"></div>
+                </div>
+            </li>
+        </ul>
+    </section>
+</div>

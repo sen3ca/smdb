@@ -1,0 +1,10 @@
+<a href="#/person/{{person.id}}" class="personBlock">
+    <div class="col-xs-2 col-md-3 personImage">
+        <div data-movie-image data-image-file="person.profile_path" data-size="small" data-type="person" data-done-loading="true"></div>
+    </div>
+    <div class="col-xs-10 col-md-9">
+        <div>{{person.name}}  <span ng-show="person.character">as {{person.character}}</span></div>
+        <div ng-show="movie.original_title != movie.title" class="alternateTitle">({{movie.title}})</div>
+        <div>{{movie.release_date | date : 'longDate'}}</div>
+    </div>
+</a>

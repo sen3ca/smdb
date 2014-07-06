@@ -1,0 +1,29 @@
+<div class="col-md-12" ng-controller="PersonCtrl">
+    <h1>{{person.name}} <a ng-show="imdbUrl" href="{{imdbUrl}}" class="pull-right imdbLink" target="_blank">view on imdb</a></h1>
+    <section class="row">
+        <div class="col-md-3">
+            <div data-movie-image data-image-file="person.profile_path" data-size="original" data-type="person" data-done-loading="!loadingPerson"></div>
+        </div>
+        <div class="col-md-9">
+            <h4>Bio</h4>
+            <div ng-show="person.shortBiography && shortBioDisplayed == true">{{person.shortBiography}} <a href="javascript:void(0)" ng-click="toggleBio()">More...</a></div>
+            <div ng-show="person.biography && shortBioDisplayed == false">{{person.biography}} <a href="javascript:void(0)" ng-show="person.shortBiography" ng-click="toggleBio()">Less...</a></div>
+            <div ng-show="!person.biography">No biography information available for this person</div>
+        </div>
+    </section>
+
+    <section ng-show="personsMovies.cast.length" class="row">
+        <div class="col-xs-12 col-md-12">
+            <div class="row">
+                <h3>Movies</h3>
+            </div>
+            <ul class="removeFormatting">
+                <li ng-repeat="cast in personsMovies.cast | orderBy:'release_date':reverse=true">
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div data-movie-block movie="cast"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="smdb">
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+  <link href="app.less" type="text/css" rel="stylesheet/less">
+</head>
+<body>
+
+  <!-- Livereload script for development only (stripped during dist build) -->
+  <script src="http://localhost:35729/livereload.js" data-concat="false"></script>
+
+  <!-- JS from Bower Components -->
+  <script src="bower_components/less.js/dist/less-1.6.2.js" data-concat="false"></script>
+  <script src="bower_components/jquery/jquery.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+  <!-- Add New Bower Component JS Above -->
+
+
+  <!-- Main App JS -->
+  <script src="app.js"></script>
+  <script src="partial/home/home.js"></script>
+  <script src="service/theMovieDbService.js"></script>
+  <script src="partial/movie/movie.js"></script>
+  <script src="partial/person/person.js"></script>
+  <script src="partial/searchResults/searchResults.js"></script>
+  <script src="directive/personBlock/personBlock.js"></script>
+  <script src="directive/movieBlock/movieBlock.js"></script>
+  <script src="directive/movieImage/movieImage.js"></script>
+
+  <!-- Add New Component JS Above -->
+
+  <header class="mainHeader">
+      <section class="titleAndSearchBox col-xs-12 col-md-6 col-lg-6">
+          <h1>Seneca's Movie Database <a class="homeLink pull-right glyphicon glyphicon-home" href="#/"></a></h1>
+
+          <section class="row" ng-controller="MainSearch">
+              <div class="col-xs-6">
+                  <form>
+                      <input type="text" ng-model="searchText"
+                             ng-model="searchText"
+                             typeahead="label as value.label for value in getMoviesAndPeople($viewValue)"
+                             typeahead-min-length="1"
+                             typeahead-template-url="moviePersonTypeahead.html"
+                             typeahead-on-select="goToEntity($item, $model, $label)"
+                             class="form-control"
+                             placeholder="Enter movie or person name"
+                              />
+                  </form>
+              </div>
+              <div class="col-xs-3" ng-controller="MovieCtrl">
+                  <button class="btn btn-default" ng-click="search()">Search</button>
+              </div>
+          </section>
+      </section>
+  </header>
+  <div>
+    <div id="content" class="container">
+      <div class="row">
+        <div ng-view>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+      powered by <a href="http://www.themoviedb.org/" target="_blank">The Movie Database</a>
+  </footer>
+</body>
+</html>

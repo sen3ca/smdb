@@ -1,0 +1,11 @@
+<a href="#/movie/{{movie.id}}" class="movieBlock">
+    <div class="col-xs-2 col-sm-3 col-md-2 col-lg-3 movieImage">
+        <div data-movie-image data-image-file="movie.poster_path" data-size="small" data-type="movie" data-done-loading="true"></div>
+    </div>
+    <div class="col-xs-10 col-sm-9 col-md-10 col-lg-9 movieInfo">
+        <div>{{movie.original_title}}</div>
+        <div ng-show="movie.character">as {{movie.character}}</div>
+        <div ng-show="movie.original_title != movie.title" class="alternateTitle">({{movie.title}})</div>
+        <div>{{movie.release_date | date : 'longDate'}}</div>
+    </div>
+</a>
